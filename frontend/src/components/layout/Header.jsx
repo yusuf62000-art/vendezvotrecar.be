@@ -87,8 +87,9 @@ export const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden mobile-menu ${mobileMenuOpen ? 'open' : 'closed'}`}>
-          <div className="py-4 space-y-2">
+        {mobileMenuOpen && (
+          <div className="lg:hidden absolute top-16 left-0 right-0 bg-white border-b shadow-lg z-50">
+            <div className="py-4 space-y-2 px-4">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -124,7 +125,7 @@ export const Header = () => {
               </div>
             </div>
           </div>
-        </div>
+        )}
       </nav>
     </header>
   );
