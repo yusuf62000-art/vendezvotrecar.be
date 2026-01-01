@@ -1,0 +1,171 @@
+{
+  "timestamp": "2026-01-01T14:11:49.385047",
+  "total_tests": 8,
+  "passed_tests": 8,
+  "success_rate": 100.0,
+  "results": [
+    {
+      "test_name": "API Root",
+      "method": "GET",
+      "endpoint": "",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_data": {
+        "message": "VendezVotreCar API"
+      },
+      "error": null
+    },
+    {
+      "test_name": "Create Estimation",
+      "method": "POST",
+      "endpoint": "estimations",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_data": {
+        "id": "76ebae51-0093-4b1b-9556-6bef5008209b",
+        "marque": "Renault",
+        "modele": "Clio",
+        "annee": "2015",
+        "kilometrage": "120000",
+        "etat": "roule",
+        "carburant": "essence",
+        "boite": "manuelle",
+        "immatriculation": "1-ABC-123",
+        "nom": "Jean Dupont",
+        "telephone": "0479123456",
+        "email": "jean.dupont@test.com",
+        "code_postal": "1000",
+        "ville": "Bruxelles",
+        "rgpd_consent": true,
+        "photos": [],
+        "created_at": "2026-01-01T14:11:49.103436Z",
+        "status": "nouveau"
+      },
+      "error": null
+    },
+    {
+      "test_name": "Get All Estimations",
+      "method": "GET",
+      "endpoint": "estimations",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_data": [
+        {
+          "id": "76ebae51-0093-4b1b-9556-6bef5008209b",
+          "marque": "Renault",
+          "modele": "Clio",
+          "annee": "2015",
+          "kilometrage": "120000",
+          "etat": "roule",
+          "carburant": "essence",
+          "boite": "manuelle",
+          "immatriculation": "1-ABC-123",
+          "nom": "Jean Dupont",
+          "telephone": "0479123456",
+          "email": "jean.dupont@test.com",
+          "code_postal": "1000",
+          "ville": "Bruxelles",
+          "rgpd_consent": true,
+          "photos": [],
+          "created_at": "2026-01-01T14:11:49.103436Z",
+          "status": "nouveau"
+        }
+      ],
+      "error": null
+    },
+    {
+      "test_name": "Get Estimation by ID",
+      "method": "GET",
+      "endpoint": "estimations/76ebae51-0093-4b1b-9556-6bef5008209b",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_data": {
+        "id": "76ebae51-0093-4b1b-9556-6bef5008209b",
+        "marque": "Renault",
+        "modele": "Clio",
+        "annee": "2015",
+        "kilometrage": "120000",
+        "etat": "roule",
+        "carburant": "essence",
+        "boite": "manuelle",
+        "immatriculation": "1-ABC-123",
+        "nom": "Jean Dupont",
+        "telephone": "0479123456",
+        "email": "jean.dupont@test.com",
+        "code_postal": "1000",
+        "ville": "Bruxelles",
+        "rgpd_consent": true,
+        "photos": [],
+        "created_at": "2026-01-01T14:11:49.103436Z",
+        "status": "nouveau"
+      },
+      "error": null
+    },
+    {
+      "test_name": "Invalid Estimation (No RGPD)",
+      "method": "POST",
+      "endpoint": "estimations",
+      "expected_status": 400,
+      "actual_status": 400,
+      "success": true,
+      "response_data": {
+        "detail": "Le consentement RGPD est obligatoire"
+      },
+      "error": null
+    },
+    {
+      "test_name": "Create Contact",
+      "method": "POST",
+      "endpoint": "contact",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_data": {
+        "id": "17318631-18f0-45f8-9a98-da0098cfb421",
+        "nom": "Marie Martin",
+        "email": "marie.martin@test.com",
+        "telephone": "0479654321",
+        "message": "Je souhaite avoir plus d'informations sur le rachat de v\u00e9hicules.",
+        "created_at": "2026-01-01T14:11:49.285865Z"
+      },
+      "error": null
+    },
+    {
+      "test_name": "Get All Contacts",
+      "method": "GET",
+      "endpoint": "contact",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_data": [
+        {
+          "id": "17318631-18f0-45f8-9a98-da0098cfb421",
+          "nom": "Marie Martin",
+          "email": "marie.martin@test.com",
+          "telephone": "0479654321",
+          "message": "Je souhaite avoir plus d'informations sur le rachat de v\u00e9hicules.",
+          "created_at": "2026-01-01T14:11:49.285865Z"
+        }
+      ],
+      "error": null
+    },
+    {
+      "test_name": "Get Stats",
+      "method": "GET",
+      "endpoint": "stats",
+      "expected_status": 200,
+      "actual_status": 200,
+      "success": true,
+      "response_data": {
+        "total_estimations": 1,
+        "new_estimations": 1,
+        "total_contacts": 1
+      },
+      "error": null
+    }
+  ]
+}
