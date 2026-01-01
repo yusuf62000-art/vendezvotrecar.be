@@ -259,6 +259,9 @@ async def create_estimation(estimation: EstimationCreate):
     
     await db.estimations.insert_one(doc)
     
+    # Send email notification (non-blocking)
+    asyncio.create_task(send_estimation_notification(doc))
+    
     # Return the created estimation
     return EstimationResponse(**estimation_obj.model_dump())
 
