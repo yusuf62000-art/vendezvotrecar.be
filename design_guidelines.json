@@ -1,0 +1,123 @@
+{
+  "identity": {
+    "persona": "E1",
+    "philosophy": "Fusion over Imitation. Emotion First. Content is King.",
+    "anti_patterns": [
+      "Generic 'Startup Blue' gradients",
+      "Inter font for headings",
+      "Centered text everywhere",
+      "Boring equal-width grids"
+    ]
+  },
+  "theme": {
+    "mode": "light",
+    "archetype": "Swiss & High-Contrast (Trust Variant)",
+    "emotional_tone": "Professional, Fast, Transparent, Reassuring"
+  },
+  "typography": {
+    "headings": {
+      "family": "Outfit",
+      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap",
+      "usage": "Use for all H1-H6. Bold weights (600/800) for impact. Tight tracking."
+    },
+    "body": {
+      "family": "Manrope",
+      "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap",
+      "usage": "Use for paragraphs, inputs, labels. High legibility."
+    }
+  },
+  "colors": {
+    "primary": {
+      "name": "Electric Royal",
+      "hex": "#2563EB",
+      "usage": "Primary brand color. Use for active states, key icons, and branding elements."
+    },
+    "secondary": {
+      "name": "Signal Orange",
+      "hex": "#F97316",
+      "usage": "High-urgency CTAs (e.g., 'Get Offer Now'). Creates vibration against the blue."
+    },
+    "background": {
+      "main": "#FFFFFF",
+      "secondary": "#F8FAFC",
+      "tertiary": "#F1F5F9"
+    },
+    "text": {
+      "primary": "#0F172A",
+      "secondary": "#475569",
+      "muted": "#94A3B8"
+    },
+    "border": {
+      "default": "#E2E8F0",
+      "active": "#2563EB"
+    }
+  },
+  "layout_strategies": {
+    "spacing": "Generous. Use p-8, p-12, p-16. Avoid cramped containers.",
+    "grid": "Bento-style asymmetry. Avoid equal 3-column grids. Use col-span-2 vs col-span-1 to create hierarchy.",
+    "container": "Max-width 1400px for large screens. 90% width on mobile."
+  },
+  "components": {
+    "Hero": {
+      "structure": "Split Screen (50/50 or 60/40). Left: Value Prop + Form Step 1. Right: Visual.",
+      "visual": "Use the 'Blue Car' image with a subtle 'glass' overlay or clipped geometric shape.",
+      "cta": "Embedded Form Step 1 (License Plate or Car Model input) - Immediate action."
+    },
+    "EstimationForm": {
+      "type": "Multi-step Wizard",
+      "style": "Card-based. Clean white background with heavy shadow (shadow-xl).",
+      "progress": "Visible progress bar at top. Smooth transitions between steps.",
+      "inputs": "Large, touch-friendly inputs (h-12 or h-14)."
+    },
+    "TrustSection": {
+      "structure": "Bento Grid",
+      "items": [
+        { "title": "Instant Payment", "icon": "Lightning", "size": "large" },
+        { "title": "Free Towing", "icon": "Truck", "size": "medium" },
+        { "title": "No Paperwork", "icon": "FileText", "size": "small" }
+      ]
+    },
+    "VehicleMarquee": {
+      "type": "Infinite Scroll",
+      "content": "Sedan • SUV • Accidenté • En Panne • Sans CT • Fort Kilométrage • Utilitaire",
+      "style": "Large outline text or bold typography. Opacity 50%."
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_visual": {
+        "url": "https://images.pexels.com/photos/11589801/pexels-photo-11589801.jpeg",
+        "alt": "Modern Blue Car Side View",
+        "usage": "Hero section right side or background with overlay."
+      },
+      "happy_customer": {
+        "url": "https://images.pexels.com/photos/7144213/pexels-photo-7144213.jpeg",
+        "alt": "Happy person with car keys",
+        "usage": "Testimonials or 'Success' step of form."
+      },
+      "towing_service": {
+        "url": "https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg",
+        "alt": "Tow truck loading car",
+        "usage": "Services section (We buy broken cars)."
+      }
+    },
+    "icons": {
+      "library": "lucide-react",
+      "style": "Stroke width 1.5 or 2. Rounded caps."
+    }
+  },
+  "universal_guidelines": {
+    "interactions": "All buttons must have hover states (transform: translateY(-2px)). Inputs must have focus rings.",
+    "accessibility": "Ensure text contrast is > 4.5:1. Use aria-labels on icon buttons.",
+    "motion": "Use framer-motion for step transitions in the form. Animate elements in on scroll.",
+    "testing": "Add data-testid to all inputs and buttons (e.g., 'submit-estimation', 'input-mileage')."
+  },
+  "instructions_to_main_agent": [
+    "Install 'lucide-react' and 'framer-motion' if not present.",
+    "Use 'sonner' for toast notifications.",
+    "Create a 'components/layout' folder for the Header/Footer.",
+    "Ensure the form state is managed globally or lifted up to the page level.",
+    "Implement the 'Swiss Grid' layout for the 'How it works' section.",
+    "Use the defined color palette in tailwind.config.js (extend the theme)."
+  ]
+}
