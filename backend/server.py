@@ -296,6 +296,10 @@ async def create_contact(contact: ContactCreate):
     doc['created_at'] = doc['created_at'].isoformat()
     
     await db.contacts.insert_one(doc)
+    
+    # Send email notification (non-blocking)
+    asyncio.create_task(send_contact_notification(doc))
+    
     return contact_obj
 
 @api_router.get("/contact", response_model=List[ContactMessage])
