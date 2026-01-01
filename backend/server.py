@@ -120,6 +120,133 @@ class ContactCreate(BaseModel):
 async def root():
     return {"message": "VendezVotreCar API"}
 
+
+async def send_estimation_notification(estimation: dict):
+    """Send email notification for new estimation request"""
+    try:
+        # Get vehicle state label
+        state_labels = {
+            'roule': 'Roule parfaitement',
+            'roule_problemes': 'Roule avec des problèmes',
+            'ne_roule_pas': 'Ne roule pas (panne)',
+            'accident': 'Accidenté',
+            'moteur_hs': 'Moteur HS',
+            'sans_ct': 'Sans contrôle technique',
+            'autre': 'Autre'
+        }
+        
+        fuel_labels = {
+            'essence': 'Essence',
+            'diesel': 'Diesel',
+            'hybride': 'Hybride',
+            'electrique': 'Électrique',
+            'gpl': 'GPL'
+        }
+        
+        gearbox_labels = {
+            'manuelle': 'Manuelle',
+            'automatique': 'Automatique'
+        }
+        
+        etat_label = state_labels.get(estimation.get('etat', ''), estimation.get('etat', ''))
+        carburant_label = fuel_labels.get(estimation.get('carburant', ''), estimation.get('carburant', ''))
+        boite_label = gearbox_labels.get(estimation.get('boite', ''), estimation.get('boite', ''))
+        
+        html_content = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background-color: #2563EB; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+                <h1 style="margin: 0;">🚗 Nouvelle demande de rachat</h1>
+            </div>
+            
+            <div style="background-color: #f8f9fa; padding: 20px; border: 1px solid #e9ecef;">
+                <h2 style="color: #2563EB; border-bottom: 2px solid #2563EB; padding-bottom: 10px;">Informations du véhicule</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><td style="padding: 8px 0; color: #666;">Marque / Modèle</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('marque', '')} {estimation.get('modele', '')}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Année</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('annee', '')}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Kilométrage</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('kilometrage', '')} km</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">État</td><td style="padding: 8px 0; font-weight: bold; color: #F97316;">{etat_label}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Carburant</td><td style="padding: 8px 0; font-weight: bold;">{carburant_label}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Boîte</td><td style="padding: 8px 0; font-weight: bold;">{boite_label}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Immatriculation</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('immatriculation', 'Non renseignée')}</td></tr>
+                </table>
+                
+                <h2 style="color: #2563EB; border-bottom: 2px solid #2563EB; padding-bottom: 10px; margin-top: 30px;">Coordonnées du vendeur</h2>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><td style="padding: 8px 0; color: #666;">Nom</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('nom', '')}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Téléphone</td><td style="padding: 8px 0; font-weight: bold; color: #2563EB;"><a href="tel:{estimation.get('telephone', '')}" style="color: #2563EB;">{estimation.get('telephone', '')}</a></td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0; font-weight: bold;"><a href="mailto:{estimation.get('email', '')}" style="color: #2563EB;">{estimation.get('email', '')}</a></td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Localisation</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('code_postal', '')} {estimation.get('ville', '')}</td></tr>
+                </table>
+                
+                <div style="margin-top: 20px; padding: 15px; background-color: #fff; border-radius: 8px; border-left: 4px solid #F97316;">
+                    <p style="margin: 0; color: #666;">📷 Photos jointes: <strong>{len(estimation.get('photos', []))}</strong></p>
+                    <p style="margin: 5px 0 0 0; color: #666;">🆔 Référence: <strong>{estimation.get('id', '')[:8].upper()}</strong></p>
+                </div>
+            </div>
+            
+            <div style="background-color: #2563EB; color: white; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
+                <p style="margin: 0; font-size: 14px;">VendezVotreCar - Rachat de véhicules en Belgique</p>
+            </div>
+        </body>
+        </html>
+        """
+        
+        params = {
+            "from": SENDER_EMAIL,
+            "to": [NOTIFICATION_EMAIL],
+            "subject": f"🚗 Nouvelle demande: {estimation.get('marque', '')} {estimation.get('modele', '')} - {estimation.get('nom', '')}",
+            "html": html_content
+        }
+        
+        await asyncio.to_thread(resend.Emails.send, params)
+        logger.info(f"Email notification sent for estimation {estimation.get('id', '')}")
+    except Exception as e:
+        logger.error(f"Failed to send email notification: {str(e)}")
+
+
+async def send_contact_notification(contact: dict):
+    """Send email notification for new contact message"""
+    try:
+        html_content = f"""
+        <html>
+        <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <div style="background-color: #2563EB; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+                <h1 style="margin: 0;">📩 Nouveau message de contact</h1>
+            </div>
+            
+            <div style="background-color: #f8f9fa; padding: 20px; border: 1px solid #e9ecef;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr><td style="padding: 8px 0; color: #666;">Nom</td><td style="padding: 8px 0; font-weight: bold;">{contact.get('nom', '')}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0; font-weight: bold;"><a href="mailto:{contact.get('email', '')}" style="color: #2563EB;">{contact.get('email', '')}</a></td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Téléphone</td><td style="padding: 8px 0; font-weight: bold;">{contact.get('telephone', 'Non renseigné')}</td></tr>
+                </table>
+                
+                <h3 style="color: #2563EB; margin-top: 20px;">Message:</h3>
+                <div style="background-color: #fff; padding: 15px; border-radius: 8px; border-left: 4px solid #2563EB;">
+                    <p style="margin: 0; white-space: pre-wrap;">{contact.get('message', '')}</p>
+                </div>
+            </div>
+            
+            <div style="background-color: #2563EB; color: white; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
+                <p style="margin: 0; font-size: 14px;">VendezVotreCar - Rachat de véhicules en Belgique</p>
+            </div>
+        </body>
+        </html>
+        """
+        
+        params = {
+            "from": SENDER_EMAIL,
+            "to": [NOTIFICATION_EMAIL],
+            "subject": f"📩 Nouveau message de {contact.get('nom', '')}",
+            "html": html_content
+        }
+        
+        await asyncio.to_thread(resend.Emails.send, params)
+        logger.info(f"Contact email notification sent for {contact.get('id', '')}")
+    except Exception as e:
+        logger.error(f"Failed to send contact email notification: {str(e)}")
+
 @api_router.post("/estimations", response_model=EstimationResponse)
 async def create_estimation(estimation: EstimationCreate):
     """Create a new vehicle estimation request"""
