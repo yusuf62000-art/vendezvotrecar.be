@@ -1,51 +1,47 @@
-import { useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import { Toaster } from "./components/ui/sonner";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Layout
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+// Pages
+import Home from "./pages/Home";
+import Estimation from "./pages/Estimation";
+import ThankYou from "./pages/ThankYou";
+import HowItWorks from "./pages/HowItWorks";
+import VehicleTypes from "./pages/VehicleTypes";
+import FAQ from "./pages/FAQ";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Legal from "./pages/Legal";
+import Privacy from "./pages/Privacy";
+import Cookies, { CookieBanner } from "./pages/Cookies";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App min-h-screen flex flex-col">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <Header />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/estimation" element={<Estimation />} />
+            <Route path="/merci" element={<ThankYou />} />
+            <Route path="/comment-ca-marche" element={<HowItWorks />} />
+            <Route path="/vehicules-rachetes" element={<VehicleTypes />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/a-propos" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/mentions-legales" element={<Legal />} />
+            <Route path="/confidentialite" element={<Privacy />} />
+            <Route path="/cookies" element={<Cookies />} />
+          </Routes>
+        </main>
+        <Footer />
+        <CookieBanner />
+        <Toaster position="top-right" />
       </BrowserRouter>
     </div>
   );
