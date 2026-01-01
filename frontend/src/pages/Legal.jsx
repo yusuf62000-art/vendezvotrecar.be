@@ -16,8 +16,8 @@ const Legal = () => {
           <h2>1. Informations légales</h2>
           <p>
             <strong>Nom du site :</strong> VendezVotreCar<br />
-            <strong>Email :</strong> Ymardi@gmail.com<br />
-            <strong>Téléphone :</strong> 04 79 37 66 64<br />
+            <strong>Email :</strong> vendezvotrecar@gmail.com<br />
+            <strong>Téléphone :</strong> +32 451 02 58 49<br />
             <strong>Zone d'activité :</strong> Belgique (Wallonie, Bruxelles, Flandre)
           </p>
 
@@ -52,7 +52,7 @@ const Legal = () => {
           <h2>6. Contact</h2>
           <p>
             Pour toute question relative aux présentes mentions légales, vous pouvez nous contacter 
-            à l'adresse email suivante : Ymardi@gmail.com
+            à l'adresse email suivante : vendezvotrecar@gmail.com
           </p>
         </div>
       </section>

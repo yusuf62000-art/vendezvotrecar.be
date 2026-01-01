@@ -73,7 +73,7 @@ const Privacy = () => {
             <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données</li>
           </ul>
           <p>
-            Pour exercer ces droits, contactez-nous à : Ymardi@gmail.com
+            Pour exercer ces droits, contactez-nous à : vendezvotrecar@gmail.com
           </p>
 
           <h2>7. Sécurité des données</h2>
@@ -86,7 +86,7 @@ const Privacy = () => {
           <h2>8. Contact</h2>
           <p>
             Pour toute question relative à cette politique de confidentialité, vous pouvez nous 
-            contacter à : Ymardi@gmail.com
+            contacter à : vendezvotrecar@gmail.com
           </p>
         </div>
       </section>

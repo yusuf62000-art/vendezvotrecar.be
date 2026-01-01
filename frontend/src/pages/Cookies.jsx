@@ -74,7 +74,7 @@ const Cookies = () => {
           <h2>5. Contact</h2>
           <p>
             Pour toute question relative à notre utilisation des cookies, contactez-nous à : 
-            Ymardi@gmail.com
+            vendezvotrecar@gmail.com
           </p>
         </div>
       </section>

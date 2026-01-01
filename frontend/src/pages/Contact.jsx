@@ -69,14 +69,14 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Téléphone',
-      value: '04 79 37 66 64',
-      href: 'tel:0479376664'
+      value: '+32 451 02 58 49',
+      href: 'tel:+32451025849'
     },
     {
       icon: Mail,
       title: 'Email',
-      value: 'Ymardi@gmail.com',
-      href: 'mailto:Ymardi@gmail.com'
+      value: 'vendezvotrecar@gmail.com',
+      href: 'mailto:vendezvotrecar@gmail.com'
     },
     {
       icon: MapPin,

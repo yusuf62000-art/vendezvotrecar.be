@@ -115,9 +115,9 @@ const FAQ = () => {
                 Nous contacter
               </Button>
             </Link>
-            <a href="tel:0479376664">
+            <a href="tel:+32451025849">
               <Button className="bg-brand-primary hover:bg-blue-700 text-white">
-                04 79 37 66 64
+                +32 451 02 58 49
               </Button>
             </a>
           </div>

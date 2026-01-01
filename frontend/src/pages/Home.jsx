@@ -114,14 +114,14 @@ const Home = () => {
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
-                <a href="tel:0479376664">
+                <a href="tel:+32451025849">
                   <Button 
                     size="lg" 
                     variant="outline" 
                     className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-brand-primary text-lg px-8 py-6"
                     data-testid="hero-phone"
                   >
-                    04 79 37 66 64
+                    +32 451 02 58 49
                   </Button>
                 </a>
               </div>
