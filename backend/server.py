@@ -201,6 +201,12 @@ async def send_estimation_notification(estimation: dict):
                     <p style="margin: 0; color: #666;">Photos jointes: <strong>{len(estimation.get('photos', []))}</strong></p>
                     <p style="margin: 5px 0 0 0; color: #666;">Référence: <strong>{estimation.get('id', '')[:8].upper()}</strong></p>
                 </div>
+                
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="{SITE_URL}/demande/{estimation.get('id', '')}" style="display: inline-block; background-color: #2563EB; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">
+                        Voir la demande avec photos
+                    </a>
+                </div>
             </div>
             
             <div style="background-color: #2563EB; color: white; padding: 15px; text-align: center; border-radius: 0 0 8px 8px;">
