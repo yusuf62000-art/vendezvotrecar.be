@@ -124,7 +124,7 @@ async def root():
 
 
 async def send_estimation_notification(estimation: dict):
-    """Send email notification for new estimation request"""
+    """Send email notification for new estimation request via Gmail SMTP"""
     try:
         # Get vehicle state label
         state_labels = {
@@ -158,7 +158,7 @@ async def send_estimation_notification(estimation: dict):
         <html>
         <body style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <div style="background-color: #2563EB; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
-                <h1 style="margin: 0;">🚗 Nouvelle demande de rachat</h1>
+                <h1 style="margin: 0;">Nouvelle demande de rachat</h1>
             </div>
             
             <div style="background-color: #f8f9fa; padding: 20px; border: 1px solid #e9ecef;">
@@ -176,14 +176,14 @@ async def send_estimation_notification(estimation: dict):
                 <h2 style="color: #2563EB; border-bottom: 2px solid #2563EB; padding-bottom: 10px; margin-top: 30px;">Coordonnées du vendeur</h2>
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr><td style="padding: 8px 0; color: #666;">Nom</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('nom', '')}</td></tr>
-                    <tr><td style="padding: 8px 0; color: #666;">Téléphone</td><td style="padding: 8px 0; font-weight: bold; color: #2563EB;"><a href="tel:{estimation.get('telephone', '')}" style="color: #2563EB;">{estimation.get('telephone', '')}</a></td></tr>
-                    <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0; font-weight: bold;"><a href="mailto:{estimation.get('email', '')}" style="color: #2563EB;">{estimation.get('email', '')}</a></td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Téléphone</td><td style="padding: 8px 0; font-weight: bold; color: #2563EB;">{estimation.get('telephone', '')}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Email</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('email', '')}</td></tr>
                     <tr><td style="padding: 8px 0; color: #666;">Localisation</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('code_postal', '')} {estimation.get('ville', '')}</td></tr>
                 </table>
                 
                 <div style="margin-top: 20px; padding: 15px; background-color: #fff; border-radius: 8px; border-left: 4px solid #F97316;">
-                    <p style="margin: 0; color: #666;">📷 Photos jointes: <strong>{len(estimation.get('photos', []))}</strong></p>
-                    <p style="margin: 5px 0 0 0; color: #666;">🆔 Référence: <strong>{estimation.get('id', '')[:8].upper()}</strong></p>
+                    <p style="margin: 0; color: #666;">Photos jointes: <strong>{len(estimation.get('photos', []))}</strong></p>
+                    <p style="margin: 5px 0 0 0; color: #666;">Référence: <strong>{estimation.get('id', '')[:8].upper()}</strong></p>
                 </div>
             </div>
             
@@ -194,14 +194,9 @@ async def send_estimation_notification(estimation: dict):
         </html>
         """
         
-        params = {
-            "from": SENDER_EMAIL,
-            "to": [NOTIFICATION_EMAIL],
-            "subject": f"🚗 Nouvelle demande: {estimation.get('marque', '')} {estimation.get('modele', '')} - {estimation.get('nom', '')}",
-            "html": html_content
-        }
+        subject = f"Nouvelle demande: {estimation.get('marque', '')} {estimation.get('modele', '')} - {estimation.get('nom', '')}"
         
-        await asyncio.to_thread(resend.Emails.send, params)
+        await asyncio.to_thread(send_email_smtp, subject, html_content)
         logger.info(f"Email notification sent for estimation {estimation.get('id', '')}")
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
