@@ -18,6 +18,7 @@ import Contact from "./pages/Contact";
 import Legal from "./pages/Legal";
 import Privacy from "./pages/Privacy";
 import Cookies, { CookieBanner } from "./pages/Cookies";
+import ViewEstimation from "./pages/ViewEstimation";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/mentions-legales" element={<Legal />} />
             <Route path="/confidentialite" element={<Privacy />} />
             <Route path="/cookies" element={<Cookies />} />
+            <Route path="/demande/:id" element={<ViewEstimation />} />
           </Routes>
         </main>
         <Footer />
