@@ -123,6 +123,21 @@ async def root():
     return {"message": "VendezVotreCar API"}
 
 
+def send_email_smtp(subject: str, html_content: str):
+    """Send email using Gmail SMTP"""
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = subject
+    msg['From'] = SMTP_EMAIL
+    msg['To'] = NOTIFICATION_EMAIL
+    
+    html_part = MIMEText(html_content, 'html')
+    msg.attach(html_part)
+    
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+        server.login(SMTP_EMAIL, SMTP_PASSWORD)
+        server.sendmail(SMTP_EMAIL, NOTIFICATION_EMAIL, msg.as_string())
+
+
 async def send_estimation_notification(estimation: dict):
     """Send email notification for new estimation request via Gmail SMTP"""
     try:
