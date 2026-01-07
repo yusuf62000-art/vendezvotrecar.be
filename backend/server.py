@@ -27,6 +27,7 @@ db = client[os.environ['DB_NAME']]
 SMTP_EMAIL = os.environ.get('SMTP_EMAIL')
 SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD')
 NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', 'vendezvotrecar@gmail.com')
+SITE_URL = os.environ.get('SITE_URL', 'https://rachat-express.preview.emergentagent.com')
 
 # Create the main app without a prefix
 app = FastAPI()
