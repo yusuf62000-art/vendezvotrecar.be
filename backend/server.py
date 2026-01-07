@@ -5,13 +5,15 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 import asyncio
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Optional
 import uuid
 from datetime import datetime, timezone
 import base64
-import resend
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -21,9 +23,9 @@ mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
-# Resend configuration
-resend.api_key = os.environ.get('RESEND_API_KEY')
-SENDER_EMAIL = os.environ.get('SENDER_EMAIL', 'onboarding@resend.dev')
+# Gmail SMTP configuration
+SMTP_EMAIL = os.environ.get('SMTP_EMAIL')
+SMTP_PASSWORD = os.environ.get('SMTP_PASSWORD')
 NOTIFICATION_EMAIL = os.environ.get('NOTIFICATION_EMAIL', 'vendezvotrecar@gmail.com')
 
 # Create the main app without a prefix
