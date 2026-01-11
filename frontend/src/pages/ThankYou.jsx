@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { CheckCircle2, Phone, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -6,6 +7,17 @@ import { Card, CardContent } from '../components/ui/card';
 const ThankYou = () => {
   const location = useLocation();
   const estimation = location.state?.estimation;
+
+  // Google Ads Conversion Tracking
+  useEffect(() => {
+    if (window.gtag) {
+      window.gtag('event', 'conversion', {
+        'send_to': 'AW-17847289291/DIVgCKvjgNsbEMuLoL5C',
+        'value': 1.0,
+        'currency': 'EUR'
+      });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 lg:py-20" data-testid="thankyou-page">
