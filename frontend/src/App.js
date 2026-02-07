@@ -1,6 +1,7 @@
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "./components/ui/sonner";
+import { LanguageProvider } from "./context/LanguageContext";
 
 // Layout
 import Header from "./components/layout/Header";
@@ -23,40 +24,42 @@ import Admin from "./pages/Admin";
 
 function App() {
   return (
-    <div className="App min-h-screen flex flex-col">
-      <BrowserRouter>
-        <Routes>
-          {/* Admin route without Header/Footer */}
-          <Route path="/admin/:secretPath" element={<Admin />} />
-          
-          {/* Public routes with Header/Footer */}
-          <Route path="*" element={
-            <>
-              <Header />
-              <main className="flex-grow">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/estimation" element={<Estimation />} />
-                  <Route path="/merci" element={<ThankYou />} />
-                  <Route path="/comment-ca-marche" element={<HowItWorks />} />
-                  <Route path="/vehicules-rachetes" element={<VehicleTypes />} />
-                  <Route path="/faq" element={<FAQ />} />
-                  <Route path="/a-propos" element={<About />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/mentions-legales" element={<Legal />} />
-                  <Route path="/confidentialite" element={<Privacy />} />
-                  <Route path="/cookies" element={<Cookies />} />
-                  <Route path="/demande/:id" element={<ViewEstimation />} />
-                </Routes>
-              </main>
-              <Footer />
-              <CookieBanner />
-            </>
-          } />
-        </Routes>
-        <Toaster position="top-right" />
-      </BrowserRouter>
-    </div>
+    <LanguageProvider>
+      <div className="App min-h-screen flex flex-col">
+        <BrowserRouter>
+          <Routes>
+            {/* Admin route without Header/Footer */}
+            <Route path="/admin/:secretPath" element={<Admin />} />
+            
+            {/* Public routes with Header/Footer */}
+            <Route path="*" element={
+              <>
+                <Header />
+                <main className="flex-grow">
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/estimation" element={<Estimation />} />
+                    <Route path="/merci" element={<ThankYou />} />
+                    <Route path="/comment-ca-marche" element={<HowItWorks />} />
+                    <Route path="/vehicules-rachetes" element={<VehicleTypes />} />
+                    <Route path="/faq" element={<FAQ />} />
+                    <Route path="/a-propos" element={<About />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/mentions-legales" element={<Legal />} />
+                    <Route path="/confidentialite" element={<Privacy />} />
+                    <Route path="/cookies" element={<Cookies />} />
+                    <Route path="/demande/:id" element={<ViewEstimation />} />
+                  </Routes>
+                </main>
+                <Footer />
+                <CookieBanner />
+              </>
+            } />
+          </Routes>
+          <Toaster position="top-right" />
+        </BrowserRouter>
+      </div>
+    </LanguageProvider>
   );
 }
 
