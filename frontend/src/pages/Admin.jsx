@@ -133,7 +133,9 @@ const Admin = () => {
       const nouveau = response.data.filter(e => e.status === 'nouveau').length;
       setStats({ total, nouveau });
     } catch (err) {
-      toast.error('Erreur lors du chargement');
+      console.error('Error fetching estimations:', err);
+      console.error('API URL used:', API);
+      toast.error('Erreur lors du chargement: ' + (err.response?.data?.detail || err.message));
     } finally {
       setLoading(false);
     }
