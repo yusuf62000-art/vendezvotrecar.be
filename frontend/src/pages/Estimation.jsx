@@ -69,6 +69,7 @@ const Estimation = () => {
     carburant: '',
     boite: '',
     immatriculation: '',
+    prix_souhaite: '',
     // Step 2: Photos
     photos: [],
     // Step 3: Contact
@@ -344,6 +345,22 @@ const Estimation = () => {
                     placeholder="Ex: 1-ABC-123"
                   />
                 </div>
+
+                <div>
+                  <Label htmlFor="prix_souhaite">Prix souhaité (optionnel)</Label>
+                  <div className="relative">
+                    <Input
+                      id="prix_souhaite"
+                      data-testid="input-prix-souhaite"
+                      type="number"
+                      value={formData.prix_souhaite}
+                      onChange={(e) => updateFormData('prix_souhaite', e.target.value)}
+                      placeholder="Ex: 5000"
+                      className="pr-8"
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">€</span>
+                  </div>
+                </div>
               </div>
             )}
 
@@ -527,6 +544,12 @@ const Estimation = () => {
                       <span className="text-gray-500">Boîte</span>
                       <p className="font-medium">{gearboxTypes.find(g => g.value === formData.boite)?.label}</p>
                     </div>
+                    {formData.prix_souhaite && (
+                      <div>
+                        <span className="text-gray-500">Prix souhaité</span>
+                        <p className="font-medium text-green-600">{parseInt(formData.prix_souhaite).toLocaleString()} €</p>
+                      </div>
+                    )}
                   </div>
 
                   <hr className="border-gray-200" />
