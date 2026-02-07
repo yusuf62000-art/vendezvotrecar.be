@@ -50,6 +50,7 @@ class EstimationRequest(BaseModel):
     carburant: str
     boite: str
     immatriculation: Optional[str] = None
+    prix_souhaite: Optional[str] = None
     # Contact info
     nom: str
     telephone: str
@@ -73,6 +74,7 @@ class EstimationCreate(BaseModel):
     carburant: str
     boite: str
     immatriculation: Optional[str] = None
+    prix_souhaite: Optional[str] = None
     nom: str
     telephone: str
     email: EmailStr
@@ -92,6 +94,7 @@ class EstimationResponse(BaseModel):
     carburant: str
     boite: str
     immatriculation: Optional[str] = None
+    prix_souhaite: Optional[str] = None
     nom: str
     telephone: str
     email: str
