@@ -75,15 +75,14 @@ const Home = () => {
             <div className="text-white space-y-6">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm">
                 <CheckCircle2 className="h-4 w-4 text-green-400" />
-                <span>Rachat garanti en 24h</span>
+                <span>{t('home.trustBadge1')}</span>
               </div>
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Vendez votre voiture<br />
-                <span className="text-brand-secondary">quel que soit son état</span>
+                {t('home.heroTitle')}<br />
+                <span className="text-brand-secondary">{t('home.heroTitleHighlight')}</span>
               </h1>
               <p className="text-lg text-blue-100 max-w-lg">
-                En panne, accidentée, sans contrôle technique... On rachète tous les véhicules en Belgique. 
-                Estimation gratuite en 2 minutes.
+                {t('home.heroSubtitle')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link to="/estimation">
@@ -92,7 +91,7 @@ const Home = () => {
                     className="w-full sm:w-auto bg-brand-secondary hover:bg-orange-600 text-white text-lg px-8 py-6 cta-button"
                     data-testid="hero-cta"
                   >
-                    Obtenir une offre gratuite
+                    {t('home.heroCta')}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
@@ -111,15 +110,15 @@ const Home = () => {
               <div className="flex gap-8 pt-4">
                 <div>
                   <p className="text-3xl font-bold">500+</p>
-                  <p className="text-blue-200 text-sm">Véhicules rachetés</p>
+                  <p className="text-blue-200 text-sm">{t('about.stat1')}</p>
                 </div>
                 <div>
                   <p className="text-3xl font-bold">24h</p>
-                  <p className="text-blue-200 text-sm">Délai moyen</p>
+                  <p className="text-blue-200 text-sm">{t('home.why3Title')}</p>
                 </div>
                 <div>
                   <p className="text-3xl font-bold">4.8/5</p>
-                  <p className="text-blue-200 text-sm">Satisfaction</p>
+                  <p className="text-blue-200 text-sm">{t('about.stat2')}</p>
                 </div>
               </div>
             </div>
@@ -129,13 +128,13 @@ const Home = () => {
               <Card className="bg-white/95 backdrop-blur shadow-2xl">
                 <CardContent className="p-8">
                   <h3 className="font-heading text-xl font-semibold text-gray-900 mb-4">
-                    Estimation rapide
+                    {t('estimation.title')}
                   </h3>
                   <div className="space-y-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-gray-50 rounded-lg p-3 text-center">
                         <Car className="h-6 w-6 mx-auto text-brand-primary mb-1" />
-                        <span className="text-sm text-gray-600">Toutes marques</span>
+                        <span className="text-sm text-gray-600">{t('home.sectionTypesTitle')}</span>
                       </div>
                       <div className="bg-gray-50 rounded-lg p-3 text-center">
                         <Clock className="h-6 w-6 mx-auto text-brand-primary mb-1" />
@@ -144,12 +143,12 @@ const Home = () => {
                     </div>
                     <Link to="/estimation" className="block">
                       <Button className="w-full bg-brand-primary hover:bg-blue-700 text-white py-6" data-testid="quick-form-cta">
-                        Commencer l'estimation
+                        {t('home.heroCta')}
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </Button>
                     </Link>
                     <p className="text-xs text-gray-500 text-center">
-                      Gratuit et sans engagement
+                      {t('home.trustBadge4')}
                     </p>
                   </div>
                 </CardContent>
