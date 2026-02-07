@@ -360,10 +360,10 @@ const Admin = () => {
                           <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${statusLabels[est.status]?.color}`}>
                             {statusLabels[est.status]?.label}
                           </span>
-                          {est.photos && est.photos.length > 0 && (
+                          {est.photo_count > 0 && (
                             <span className="px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-600 flex items-center gap-1">
                               <Camera className="h-3 w-3" />
-                              {est.photos.length}
+                              {est.photo_count}
                             </span>
                           )}
                         </div>
