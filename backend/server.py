@@ -405,11 +405,16 @@ async def get_admin_estimations(
         else:
             query["created_at"] = {"$lte": date_to}
     
-    estimations = await db.estimations.find(query, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    # Exclude photos from list view to improve performance (photos loaded separately)
+    projection = {"_id": 0, "photos": 0}
+    estimations = await db.estimations.find(query, projection).sort("created_at", -1).to_list(500)
     
     for est in estimations:
         if isinstance(est.get('created_at'), str):
             est['created_at'] = datetime.fromisoformat(est['created_at'])
+        # Add photo count instead of full photos
+        photo_doc = await db.estimations.find_one({"id": est["id"]}, {"photos": 1, "_id": 0})
+        est["photo_count"] = len(photo_doc.get("photos", [])) if photo_doc else 0
     
     return estimations
 
