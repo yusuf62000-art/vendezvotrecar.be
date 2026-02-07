@@ -123,7 +123,9 @@ const Admin = () => {
       if (filters.status !== 'tous') params.append('status', filters.status);
       if (filters.ville) params.append('ville', filters.ville);
       
+      console.log('Fetching estimations from:', `${API}/admin/estimations?${params}`);
       const response = await axios.get(`${API}/admin/estimations?${params}`);
+      console.log('Response:', response.data);
       setEstimations(response.data);
       
       // Calculate stats
