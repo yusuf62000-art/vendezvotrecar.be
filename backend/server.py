@@ -359,6 +359,97 @@ async def get_stats():
     }
 
 
+# Admin Configuration
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'VVC2026Admin!')
+ADMIN_SECRET_PATH = os.environ.get('ADMIN_SECRET_PATH', 'vvc-secret-2026')
+
+
+class AdminLogin(BaseModel):
+    password: str
+
+
+class StatusUpdate(BaseModel):
+    status: str
+
+
+@api_router.post("/admin/login")
+async def admin_login(login: AdminLogin):
+    """Verify admin password"""
+    if login.password == ADMIN_PASSWORD:
+        return {"success": True, "message": "Authentification réussie"}
+    raise HTTPException(status_code=401, detail="Mot de passe incorrect")
+
+
+@api_router.get("/admin/estimations")
+async def get_admin_estimations(
+    status: Optional[str] = None,
+    ville: Optional[str] = None,
+    date_from: Optional[str] = None,
+    date_to: Optional[str] = None
+):
+    """Get all estimations with optional filters for admin dashboard"""
+    query = {}
+    
+    if status and status != "tous":
+        query["status"] = status
+    
+    if ville:
+        query["ville"] = {"$regex": ville, "$options": "i"}
+    
+    if date_from:
+        query["created_at"] = {"$gte": date_from}
+    
+    if date_to:
+        if "created_at" in query:
+            query["created_at"]["$lte"] = date_to
+        else:
+            query["created_at"] = {"$lte": date_to}
+    
+    estimations = await db.estimations.find(query, {"_id": 0}).sort("created_at", -1).to_list(1000)
+    
+    for est in estimations:
+        if isinstance(est.get('created_at'), str):
+            est['created_at'] = datetime.fromisoformat(est['created_at'])
+    
+    return estimations
+
+
+@api_router.patch("/admin/estimations/{estimation_id}/status")
+async def update_estimation_status(estimation_id: str, status_update: StatusUpdate):
+    """Update estimation status"""
+    valid_statuses = ["nouveau", "contacte", "traite", "refuse"]
+    if status_update.status not in valid_statuses:
+        raise HTTPException(status_code=400, detail=f"Statut invalide. Valeurs possibles: {valid_statuses}")
+    
+    result = await db.estimations.update_one(
+        {"id": estimation_id},
+        {"$set": {"status": status_update.status}}
+    )
+    
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Estimation non trouvée")
+    
+    return {"success": True, "message": "Statut mis à jour"}
+
+
+@api_router.delete("/admin/estimations/{estimation_id}")
+async def delete_estimation(estimation_id: str):
+    """Delete an estimation"""
+    result = await db.estimations.delete_one({"id": estimation_id})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Estimation non trouvée")
+    
+    return {"success": True, "message": "Demande supprimée"}
+
+
+@api_router.get("/admin/cities")
+async def get_cities():
+    """Get list of unique cities for filter dropdown"""
+    cities = await db.estimations.distinct("ville")
+    return sorted([c for c in cities if c])
+
+
 # Include the router in the main app
 app.include_router(api_router)
 
