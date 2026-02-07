@@ -150,6 +150,19 @@ const Admin = () => {
     }
   };
 
+  const handleOpenEstimation = async (est) => {
+    // Load full estimation with photos
+    try {
+      const response = await axios.get(`${API}/estimations/${est.id}`);
+      setSelectedEstimation(response.data);
+    } catch (err) {
+      console.error('Error loading estimation details:', err);
+      // Fallback to estimation without photos
+      setSelectedEstimation({ ...est, photos: [] });
+      toast.error('Impossible de charger les photos');
+    }
+  };
+
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.patch(`${API}/admin/estimations/${id}/status`, { status: newStatus });
