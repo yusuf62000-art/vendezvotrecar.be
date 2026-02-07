@@ -203,6 +203,7 @@ async def send_estimation_notification(estimation: dict):
                     <tr><td style="padding: 8px 0; color: #666;">Boîte</td><td style="padding: 8px 0; font-weight: bold;">{boite_label}</td></tr>
                     <tr><td style="padding: 8px 0; color: #666;">Immatriculation</td><td style="padding: 8px 0; font-weight: bold;">{estimation.get('immatriculation', 'Non renseignée')}</td></tr>
                     <tr><td style="padding: 8px 0; color: #666;">Prix souhaité</td><td style="padding: 8px 0; font-weight: bold; color: #22c55e;">{f"{int(estimation.get('prix_souhaite')):,} €".replace(',', ' ') if estimation.get('prix_souhaite') else 'Non renseigné'}</td></tr>
+                    <tr><td style="padding: 8px 0; color: #666;">Délai de vente</td><td style="padding: 8px 0; font-weight: bold;">{delai_label}</td></tr>
                 </table>
                 
                 <h2 style="color: #2563EB; border-bottom: 2px solid #2563EB; padding-bottom: 10px; margin-top: 30px;">Coordonnées du vendeur</h2>
