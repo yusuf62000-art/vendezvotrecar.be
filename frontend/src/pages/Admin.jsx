@@ -341,20 +341,14 @@ const Admin = () => {
                 <Card 
                   key={est.id} 
                   className="hover:shadow-md transition-shadow cursor-pointer"
-                  onClick={() => setSelectedEstimation(est)}
+                  onClick={() => handleOpenEstimation(est)}
                   data-testid={`estimation-card-${est.id}`}
                 >
                   <CardContent className="p-4">
                     <div className="flex items-center gap-4">
-                      {/* Photo thumbnail */}
-                      <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
-                        {est.photos && est.photos.length > 0 ? (
-                          <img src={est.photos[0]} alt="Véhicule" className="w-full h-full object-cover" />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center">
-                            <Car className="h-8 w-8 text-gray-300" />
-                          </div>
-                        )}
+                      {/* Photo thumbnail placeholder */}
+                      <div className="w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0 flex items-center justify-center">
+                        <Car className="h-8 w-8 text-gray-300" />
                       </div>
                       
                       {/* Info */}
