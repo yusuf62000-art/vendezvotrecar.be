@@ -370,6 +370,20 @@ const Estimation = () => {
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">€</span>
                   </div>
                 </div>
+
+                <div>
+                  <Label htmlFor="delai_vente">Quand souhaitez-vous vendre ? (optionnel)</Label>
+                  <Select value={formData.delai_vente} onValueChange={(v) => updateFormData('delai_vente', v)}>
+                    <SelectTrigger id="delai_vente" data-testid="input-delai-vente">
+                      <SelectValue placeholder="Sélectionnez un délai" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {delaiVenteOptions.map(option => (
+                        <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
             )}
 
