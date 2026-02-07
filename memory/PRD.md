@@ -22,6 +22,13 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
   - Étape 4: Récapitulatif + confirmation
 - [x] **Champ "Prix souhaité" (optionnel)** - Ajouté le 7 Février 2026
 - [x] **Champ "Délai de vente" (optionnel)** - Options: Immédiatement, Sous 1 semaine, Sous 2 semaines, Sous 1 mois, Pas pressé
+- [x] **Tableau de bord Admin** - Ajouté le 7 Février 2026
+  - Accès sécurisé (lien secret + mot de passe)
+  - Liste des demandes avec filtres (statut, ville, recherche)
+  - Visualisation des photos en grand
+  - Changement de statut (Nouveau → Contacté → Traité → Refusé)
+  - Suppression des demandes
+  - Boutons d'action (Appeler, Email)
 - [x] Page de remerciement post-soumission
 - [x] Page "Comment ça marche" (4 étapes)
 - [x] Page "Véhicules rachetés" (6 types)
@@ -48,15 +55,20 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 ✅ MVP complet livré
 ✅ Champ "Prix souhaité" ajouté
 ✅ Champ "Délai de vente" ajouté
+✅ Tableau de bord admin
 
 ## Backlog P1 (Futur)
-- [ ] Tableau de bord admin pour gérer les demandes
 - [ ] Intégration reCAPTCHA
+- [ ] Export des demandes (CSV/Excel)
 
 ## Backlog P2 (Nice to have)
 - [ ] Estimation automatique basée sur l'Argus
 - [ ] Chat en direct
 - [ ] Multi-langue (FR/NL)
+
+## Accès Admin
+- **URL secrète** : `/admin/vvc-secret-2026`
+- **Mot de passe** : `VVC2026Admin!`
 
 ## Notes de déploiement
 ⚠️ **IMPORTANT pour la production (`vendezvotrecar.be`)**:
@@ -67,4 +79,4 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 1er Janvier 2026
 
 ## Dernière mise à jour
-7 Février 2026 - Ajout des champs "Prix souhaité" et "Délai de vente"
+7 Février 2026 - Ajout du tableau de bord admin
