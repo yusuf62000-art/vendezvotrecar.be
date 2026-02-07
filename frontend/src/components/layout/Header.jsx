@@ -2,18 +2,21 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Car } from 'lucide-react';
 import { Button } from '../ui/button';
+import { useLanguage } from '../../context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
 
   const navigation = [
-    { name: 'Accueil', href: '/' },
-    { name: 'Comment ça marche', href: '/comment-ca-marche' },
-    { name: 'Véhicules rachetés', href: '/vehicules-rachetes' },
-    { name: 'FAQ', href: '/faq' },
-    { name: 'À propos', href: '/a-propos' },
-    { name: 'Contact', href: '/contact' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.howItWorks'), href: '/comment-ca-marche' },
+    { name: t('nav.vehicleTypes'), href: '/vehicules-rachetes' },
+    { name: t('nav.faq'), href: '/faq' },
+    { name: t('nav.about'), href: '/a-propos' },
+    { name: t('nav.contact'), href: '/contact' },
   ];
 
   const isActive = (href) => location.pathname === href;
@@ -33,10 +36,10 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex lg:items-center lg:gap-8">
+          <div className="hidden lg:flex lg:items-center lg:gap-6">
             {navigation.map((item) => (
               <Link
-                key={item.name}
+                key={item.href}
                 to={item.href}
                 className={`text-sm font-medium transition-colors hover:text-brand-primary ${
                   isActive(item.href) ? 'text-brand-primary' : 'text-gray-600'
@@ -48,8 +51,9 @@ export const Header = () => {
             ))}
           </div>
 
-          {/* CTA & Phone */}
+          {/* Language Switcher, CTA & Phone */}
           <div className="hidden lg:flex lg:items-center lg:gap-4">
+            <LanguageSwitcher />
             <a
               href="tel:+32451025849"
               className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors"
@@ -63,7 +67,7 @@ export const Header = () => {
                 className="bg-brand-secondary hover:bg-orange-600 text-white cta-button"
                 data-testid="header-cta"
               >
-                Estimer ma voiture
+                {t('nav.estimate')}
               </Button>
             </Link>
           </div>
@@ -90,9 +94,13 @@ export const Header = () => {
         {mobileMenuOpen && (
           <div className="lg:hidden absolute top-16 left-0 right-0 bg-white border-b shadow-lg z-50">
             <div className="py-4 space-y-2 px-4">
+            {/* Language Switcher Mobile */}
+            <div className="px-3 py-2 border-b border-gray-100 mb-2">
+              <LanguageSwitcher />
+            </div>
             {navigation.map((item) => (
               <Link
-                key={item.name}
+                key={item.href}
                 to={item.href}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.href)
@@ -119,7 +127,7 @@ export const Header = () => {
                     className="w-full bg-brand-secondary hover:bg-orange-600 text-white"
                     data-testid="mobile-cta"
                   >
-                    Estimer ma voiture
+                    {t('nav.estimate')}
                   </Button>
                 </Link>
               </div>
