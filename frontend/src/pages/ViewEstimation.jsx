@@ -51,6 +51,14 @@ const ViewEstimation = () => {
     'automatique': 'Automatique'
   };
 
+  const delaiLabels = {
+    'immediat': 'Immédiatement',
+    '1_semaine': 'Sous 1 semaine',
+    '2_semaines': 'Sous 2 semaines',
+    '1_mois': 'Sous 1 mois',
+    'pas_presse': 'Pas pressé'
+  };
+
   useEffect(() => {
     const fetchEstimation = async () => {
       try {
@@ -154,9 +162,15 @@ const ViewEstimation = () => {
                   </div>
                 )}
                 {estimation.prix_souhaite && (
-                  <div className="flex justify-between py-2">
+                  <div className="flex justify-between py-2 border-b border-gray-100">
                     <span className="text-gray-500">Prix souhaité</span>
                     <span className="font-medium text-green-600">{parseInt(estimation.prix_souhaite).toLocaleString()} €</span>
+                  </div>
+                )}
+                {estimation.delai_vente && (
+                  <div className="flex justify-between py-2">
+                    <span className="text-gray-500">Délai de vente</span>
+                    <span className="font-medium">{delaiLabels[estimation.delai_vente] || estimation.delai_vente}</span>
                   </div>
                 )}
               </div>
