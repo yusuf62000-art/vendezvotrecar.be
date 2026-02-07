@@ -13,22 +13,25 @@ import {
 } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
+import { useLanguage } from '../context/LanguageContext';
 
 const Home = () => {
+  const { t } = useLanguage();
+
   const trustBadges = [
-    { icon: Zap, title: 'Paiement immédiat', description: 'Recevez votre argent le jour même' },
-    { icon: Truck, title: 'Enlèvement gratuit', description: 'On vient chercher votre véhicule' },
-    { icon: FileCheck, title: 'Démarches simplifiées', description: 'On s\'occupe de tout' },
-    { icon: Shield, title: 'Transaction sécurisée', description: 'Paiement garanti et sécurisé' },
+    { icon: Zap, title: t('home.trustBadge1'), description: t('home.trustBadge1') },
+    { icon: Truck, title: t('home.trustBadge2'), description: t('home.trustBadge2') },
+    { icon: FileCheck, title: t('home.trustBadge3'), description: t('home.trustBadge3') },
+    { icon: Shield, title: t('home.trustBadge4'), description: t('home.trustBadge4') },
   ];
 
   const vehicleTypes = [
-    'Voiture en panne',
-    'Véhicule accidenté',
-    'Sans contrôle technique',
-    'Fort kilométrage',
-    'Moteur HS',
-    'Utilitaire',
+    t('home.type1'),
+    t('home.type2'),
+    t('home.type3'),
+    t('home.type4'),
+    t('home.type5'),
+    t('home.type6'),
   ];
 
   const testimonials = [
@@ -36,50 +39,29 @@ const Home = () => {
       name: 'Pierre D.',
       location: 'Bruxelles',
       rating: 5,
-      text: 'Service rapide et professionnel. Ma voiture en panne a été rachetée à un bon prix. Recommandé !',
-      date: 'Il y a 2 semaines'
+      text: t('home.testimonial1'),
+      date: t('home.testimonial1Author')
     },
     {
       name: 'Marie L.',
       location: 'Liège',
       rating: 5,
-      text: 'Très satisfaite ! Ils ont racheté ma vieille Renault qui ne roulait plus. Paiement le jour même.',
-      date: 'Il y a 1 mois'
+      text: t('home.testimonial2'),
+      date: t('home.testimonial2Author')
     },
     {
       name: 'Thomas B.',
       location: 'Namur',
       rating: 5,
-      text: 'Processus simple et transparent. L\'équipe est venue chercher le véhicule chez moi. Parfait !',
-      date: 'Il y a 3 semaines'
-    },
-    {
-      name: 'Sophie V.',
-      location: 'Gand',
-      rating: 4,
-      text: 'Bonne expérience globale. Prix correct pour mon véhicule accidenté. Service clientèle réactif.',
-      date: 'Il y a 1 mois'
-    },
-    {
-      name: 'Jean-Marc R.',
-      location: 'Charleroi',
-      rating: 5,
-      text: 'Excellente surprise ! Je ne pensais pas pouvoir vendre ma voiture sans CT. Merci !',
-      date: 'Il y a 2 mois'
-    },
-    {
-      name: 'Isabelle M.',
-      location: 'Anvers',
-      rating: 5,
-      text: 'Rapide, efficace et honnête. Je recommande vivement VendezVotreCar.',
-      date: 'Il y a 6 semaines'
+      text: t('home.testimonial3'),
+      date: t('home.testimonial3Author')
     },
   ];
 
   const steps = [
-    { number: '01', title: 'Décrivez votre véhicule', description: 'Remplissez le formulaire en 2 minutes' },
-    { number: '02', title: 'Recevez une offre', description: 'On vous rappelle sous 2h' },
-    { number: '03', title: 'Acceptez et vendez', description: 'Paiement et enlèvement rapide' },
+    { number: '01', title: t('home.how1Title'), description: t('home.how1Desc') },
+    { number: '02', title: t('home.how2Title'), description: t('home.how2Desc') },
+    { number: '03', title: t('home.how3Title'), description: t('home.how3Desc') },
   ];
 
   return (
