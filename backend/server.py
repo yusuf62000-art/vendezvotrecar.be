@@ -172,9 +172,18 @@ async def send_estimation_notification(estimation: dict):
             'automatique': 'Automatique'
         }
         
+        delai_labels = {
+            'immediat': 'Immédiatement',
+            '1_semaine': 'Sous 1 semaine',
+            '2_semaines': 'Sous 2 semaines',
+            '1_mois': 'Sous 1 mois',
+            'pas_presse': 'Pas pressé'
+        }
+        
         etat_label = state_labels.get(estimation.get('etat', ''), estimation.get('etat', ''))
         carburant_label = fuel_labels.get(estimation.get('carburant', ''), estimation.get('carburant', ''))
         boite_label = gearbox_labels.get(estimation.get('boite', ''), estimation.get('boite', ''))
+        delai_label = delai_labels.get(estimation.get('delai_vente', ''), 'Non renseigné')
         
         html_content = f"""
         <html>
