@@ -198,10 +198,10 @@ const Home = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Comment ça marche ?
+              {t('home.sectionHowTitle')}
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Vendez votre véhicule en 3 étapes simples
+              {t('home.sectionHowSubtitle')}
             </p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
@@ -223,7 +223,7 @@ const Home = () => {
           <div className="text-center mt-12">
             <Link to="/comment-ca-marche">
               <Button variant="outline" className="border-brand-primary text-brand-primary hover:bg-brand-light">
-                En savoir plus
+                {t('home.heroSecondary')}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -236,12 +236,8 @@ const Home = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Ils nous ont fait confiance
+              {t('home.sectionTestimonialsTitle')}
             </h2>
-            <p className="text-lg text-gray-600">
-              Découvrez les avis de nos clients en Belgique
-            </p>
-            <p className="text-xs text-gray-400 mt-2">(Exemples d'avis pour illustration)</p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.map((testimonial, index) => (
@@ -274,10 +270,10 @@ const Home = () => {
       <section className="py-20 bg-brand-primary">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-white mb-4">
-            Prêt à vendre votre véhicule ?
+            {t('home.ctaTitle')}
           </h2>
           <p className="text-lg text-blue-100 mb-8 max-w-2xl mx-auto">
-            Obtenez une estimation gratuite en 2 minutes. On rachète votre voiture quel que soit son état.
+            {t('home.ctaSubtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/estimation">
@@ -286,7 +282,7 @@ const Home = () => {
                 className="bg-brand-secondary hover:bg-orange-600 text-white text-lg px-8 py-6 cta-button"
                 data-testid="bottom-cta"
               >
-                Estimer ma voiture maintenant
+                {t('home.ctaButton')}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
