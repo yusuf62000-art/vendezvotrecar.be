@@ -55,6 +55,14 @@ const vehicleStates = [
   { value: 'autre', label: 'Autre' },
 ];
 
+const delaiVenteOptions = [
+  { value: 'immediat', label: 'Immédiatement' },
+  { value: '1_semaine', label: 'Sous 1 semaine' },
+  { value: '2_semaines', label: 'Sous 2 semaines' },
+  { value: '1_mois', label: 'Sous 1 mois' },
+  { value: 'pas_presse', label: 'Pas pressé' },
+];
+
 const Estimation = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
@@ -70,6 +78,7 @@ const Estimation = () => {
     boite: '',
     immatriculation: '',
     prix_souhaite: '',
+    delai_vente: '',
     // Step 2: Photos
     photos: [],
     // Step 3: Contact
