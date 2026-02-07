@@ -51,6 +51,7 @@ class EstimationRequest(BaseModel):
     boite: str
     immatriculation: Optional[str] = None
     prix_souhaite: Optional[str] = None
+    delai_vente: Optional[str] = None
     # Contact info
     nom: str
     telephone: str
@@ -75,6 +76,7 @@ class EstimationCreate(BaseModel):
     boite: str
     immatriculation: Optional[str] = None
     prix_souhaite: Optional[str] = None
+    delai_vente: Optional[str] = None
     nom: str
     telephone: str
     email: EmailStr
@@ -95,6 +97,7 @@ class EstimationResponse(BaseModel):
     boite: str
     immatriculation: Optional[str] = None
     prix_souhaite: Optional[str] = None
+    delai_vente: Optional[str] = None
     nom: str
     telephone: str
     email: str
