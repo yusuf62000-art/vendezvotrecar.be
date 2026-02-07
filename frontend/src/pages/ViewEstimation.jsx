@@ -148,9 +148,15 @@ const ViewEstimation = () => {
                   <span className="font-medium">{gearboxLabels[estimation.boite] || estimation.boite}</span>
                 </div>
                 {estimation.immatriculation && (
-                  <div className="flex justify-between py-2">
+                  <div className="flex justify-between py-2 border-b border-gray-100">
                     <span className="text-gray-500">Immatriculation</span>
                     <span className="font-medium">{estimation.immatriculation}</span>
+                  </div>
+                )}
+                {estimation.prix_souhaite && (
+                  <div className="flex justify-between py-2">
+                    <span className="text-gray-500">Prix souhaité</span>
+                    <span className="font-medium text-green-600">{parseInt(estimation.prix_souhaite).toLocaleString()} €</span>
                   </div>
                 )}
               </div>
