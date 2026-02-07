@@ -1,123 +1,153 @@
 {
   "identity": {
-    "persona": "E1",
-    "philosophy": "Fusion over Imitation. Emotion First. Content is King.",
-    "anti_patterns": [
-      "Generic 'Startup Blue' gradients",
-      "Inter font for headings",
-      "Centered text everywhere",
-      "Boring equal-width grids"
-    ]
-  },
-  "theme": {
-    "mode": "light",
-    "archetype": "Swiss & High-Contrast (Trust Variant)",
-    "emotional_tone": "Professional, Fast, Transparent, Reassuring"
+    "name": "VendezVotreCar",
+    "tone": "Trustworthy, Efficient, Modern, Direct",
+    "archetype": "Neo-Industrial Trust",
+    "design_philosophy": "Clarity over decoration. The user wants to sell a car, not admire a gallery. Use high-contrast typography, clear action signals (Green = Go/Money), and reassuring imagery."
   },
   "typography": {
-    "headings": {
-      "family": "Outfit",
-      "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap",
-      "usage": "Use for all H1-H6. Bold weights (600/800) for impact. Tight tracking."
+    "font_family": {
+      "heading": "Outfit, sans-serif",
+      "body": "Manrope, sans-serif"
     },
-    "body": {
-      "family": "Manrope",
-      "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&display=swap",
-      "usage": "Use for paragraphs, inputs, labels. High legibility."
+    "weights": {
+      "heading": "700 (Bold) or 800 (ExtraBold)",
+      "body": "400 (Regular) and 500 (Medium)"
+    },
+    "styles": {
+      "h1": "text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] text-zinc-950",
+      "h2": "text-3xl md:text-5xl font-bold tracking-tight text-zinc-900",
+      "h3": "text-2xl font-semibold tracking-tight text-zinc-900",
+      "body_large": "text-lg md:text-xl text-zinc-600 leading-relaxed",
+      "body_default": "text-base text-zinc-600 leading-relaxed",
+      "caption": "text-sm text-zinc-500 font-medium uppercase tracking-wider"
     }
   },
   "colors": {
-    "primary": {
-      "name": "Electric Royal",
-      "hex": "#2563EB",
-      "usage": "Primary brand color. Use for active states, key icons, and branding elements."
+    "palette": {
+      "primary": {
+        "DEFAULT": "#10B981",
+        "foreground": "#FFFFFF",
+        "hover": "#059669",
+        "description": "Emerald Green. Used for Primary CTAs (Get Offer, Sell Now). Symbolizes Money and Go."
+      },
+      "secondary": {
+        "DEFAULT": "#18181B",
+        "foreground": "#FFFFFF",
+        "hover": "#27272A",
+        "description": "Zinc 950 (Asphalt). Used for strong headers, footer, and secondary actions."
+      },
+      "background": {
+        "DEFAULT": "#F4F4F5",
+        "paper": "#FFFFFF",
+        "subtle": "#E4E4E7"
+      },
+      "accent": {
+        "DEFAULT": "#F59E0B",
+        "foreground": "#FFFFFF",
+        "description": "Amber. Use sparingly for alerts or 'Important' tags."
+      },
+      "border": "#E4E4E7",
+      "input": "#F4F4F5"
     },
-    "secondary": {
-      "name": "Signal Orange",
-      "hex": "#F97316",
-      "usage": "High-urgency CTAs (e.g., 'Get Offer Now'). Creates vibration against the blue."
+    "gradients": {
+      "hero_overlay": "linear-gradient(to right, rgba(244,244,245,1) 0%, rgba(244,244,245,0.8) 50%, rgba(244,244,245,0) 100%)",
+      "subtle_glow": "radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.15), transparent 70%)"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#10B981] hover:bg-[#059669] text-white rounded-full px-8 py-4 font-bold text-lg shadow-lg shadow-emerald-500/20 transition-all hover:-translate-y-1",
+      "secondary": "bg-white border-2 border-zinc-200 text-zinc-900 hover:border-zinc-900 rounded-full px-6 py-3 font-semibold transition-all",
+      "ghost": "text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded-lg px-4 py-2"
     },
-    "background": {
-      "main": "#FFFFFF",
-      "secondary": "#F8FAFC",
-      "tertiary": "#F1F5F9"
+    "cards": {
+      "style": "bg-white border border-zinc-200 rounded-2xl p-6 md:p-8 hover:border-emerald-500/50 transition-colors duration-300",
+      "feature": "bg-zinc-50 border border-zinc-100 rounded-xl p-6"
     },
-    "text": {
-      "primary": "#0F172A",
-      "secondary": "#475569",
-      "muted": "#94A3B8"
+    "inputs": {
+      "style": "h-14 bg-white border-2 border-zinc-200 rounded-xl px-4 text-lg focus:border-emerald-500 focus:ring-0 transition-colors placeholder:text-zinc-400"
     },
-    "border": {
-      "default": "#E2E8F0",
-      "active": "#2563EB"
+    "badges": {
+      "trust": "bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full text-sm font-bold border border-emerald-100"
     }
   },
   "layout_strategies": {
-    "spacing": "Generous. Use p-8, p-12, p-16. Avoid cramped containers.",
-    "grid": "Bento-style asymmetry. Avoid equal 3-column grids. Use col-span-2 vs col-span-1 to create hierarchy.",
-    "container": "Max-width 1400px for large screens. 90% width on mobile."
-  },
-  "components": {
-    "Hero": {
-      "structure": "Split Screen (50/50 or 60/40). Left: Value Prop + Form Step 1. Right: Visual.",
-      "visual": "Use the 'Blue Car' image with a subtle 'glass' overlay or clipped geometric shape.",
-      "cta": "Embedded Form Step 1 (License Plate or Car Model input) - Immediate action."
+    "hero": {
+      "type": "Split Screen / Asymmetric",
+      "description": "Left side: Heavy typography, Value Prop, Primary CTA. Right side: High-quality image bleeding to edge or shaped with a mask.",
+      "classes": "grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]"
     },
-    "EstimationForm": {
-      "type": "Multi-step Wizard",
-      "style": "Card-based. Clean white background with heavy shadow (shadow-xl).",
-      "progress": "Visible progress bar at top. Smooth transitions between steps.",
-      "inputs": "Large, touch-friendly inputs (h-12 or h-14)."
+    "form_wizard": {
+      "type": "Progressive Disclosure",
+      "description": "Clean, centered card on a subtle background. Progress bar at top. One major question per step.",
+      "container": "max-w-2xl mx-auto bg-white rounded-3xl shadow-xl shadow-zinc-200/50 p-8 md:p-12 border border-zinc-100"
     },
-    "TrustSection": {
-      "structure": "Bento Grid",
-      "items": [
-        { "title": "Instant Payment", "icon": "Lightning", "size": "large" },
-        { "title": "Free Towing", "icon": "Truck", "size": "medium" },
-        { "title": "No Paperwork", "icon": "FileText", "size": "small" }
-      ]
-    },
-    "VehicleMarquee": {
-      "type": "Infinite Scroll",
-      "content": "Sedan • SUV • Accidenté • En Panne • Sans CT • Fort Kilométrage • Utilitaire",
-      "style": "Large outline text or bold typography. Opacity 50%."
+    "grid_bento": {
+      "type": "Bento Grid",
+      "description": "Use for 'How it works' or 'Why us'. varied span sizes.",
+      "classes": "grid grid-cols-1 md:grid-cols-3 gap-6"
     }
   },
-  "assets": {
-    "images": {
-      "hero_visual": {
-        "url": "https://images.pexels.com/photos/11589801/pexels-photo-11589801.jpeg",
-        "alt": "Modern Blue Car Side View",
-        "usage": "Hero section right side or background with overlay."
+  "visual_assets": {
+    "images": [
+      {
+        "category": "hero_main",
+        "url": "https://images.unsplash.com/photo-1711657069361-8fb90905e957",
+        "description": "Orange Audi on street - represents 'Any car, Any condition'. Use as main visual."
       },
-      "happy_customer": {
-        "url": "https://images.pexels.com/photos/7144213/pexels-photo-7144213.jpeg",
-        "alt": "Happy person with car keys",
-        "usage": "Testimonials or 'Success' step of form."
+      {
+        "category": "success_human",
+        "url": "https://images.pexels.com/photos/7453894/pexels-photo-7453894.jpeg",
+        "description": "Happy person holding keys. Use for 'Sold' or 'Testimonials' section."
       },
-      "towing_service": {
-        "url": "https://images.pexels.com/photos/209251/pexels-photo-209251.jpeg",
-        "alt": "Tow truck loading car",
-        "usage": "Services section (We buy broken cars)."
+      {
+        "category": "variety_car",
+        "url": "https://images.unsplash.com/photo-1642802436860-e776ac847948",
+        "description": "Green Jeep. Use for 'We buy all types' section."
       }
-    },
+    ],
     "icons": {
       "library": "lucide-react",
-      "style": "Stroke width 1.5 or 2. Rounded caps."
+      "style": "Stroke width 1.5 or 2. Color: Zinc-900 or Emerald-600."
     }
   },
-  "universal_guidelines": {
-    "interactions": "All buttons must have hover states (transform: translateY(-2px)). Inputs must have focus rings.",
-    "accessibility": "Ensure text contrast is > 4.5:1. Use aria-labels on icon buttons.",
-    "motion": "Use framer-motion for step transitions in the form. Animate elements in on scroll.",
-    "testing": "Add data-testid to all inputs and buttons (e.g., 'submit-estimation', 'input-mileage')."
+  "motion": {
+    "page_transition": "initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.4, ease: 'easeOut' }}",
+    "hover_lift": "hover:-translate-y-1 transition-transform duration-200",
+    "stagger": "staggerChildren: 0.1"
+  },
+  "accessibility": {
+    "contrast": "Ensure text is Zinc-600 or darker on light backgrounds.",
+    "focus": "Focus rings must be Emerald-500 (2px offset).",
+    "labels": "All inputs must have visible labels or aria-labels."
   },
   "instructions_to_main_agent": [
-    "Install 'lucide-react' and 'framer-motion' if not present.",
-    "Use 'sonner' for toast notifications.",
-    "Create a 'components/layout' folder for the Header/Footer.",
-    "Ensure the form state is managed globally or lifted up to the page level.",
-    "Implement the 'Swiss Grid' layout for the 'How it works' section.",
-    "Use the defined color palette in tailwind.config.js (extend the theme)."
+    "1. UPDATE TAILWIND CONFIG: Replace the blue/orange brand colors with the new Emerald/Zinc palette.",
+    "2. REFACTOR HERO: Move away from the 'gradient overlay' style to a clean, split-screen layout with the new images.",
+    "3. UPDATE FORM: Style the multi-step form to look like a premium 'Wizard' (Card based, large inputs, clear progress).",
+    "4. DO NOT BREAK FUNCTIONALITY: The form logic (steps, upload, submission) must remain intact. Only change the UI/UX layer.",
+    "5. USE LUCIDE ICONS: Replace any old icons with clean Lucide versions.",
+    "6. ADD MICRO-INTERACTIONS: Use Framer Motion for step transitions in the form."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Examine existing components to understand the project's component patterns before creating new ones",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use sonner for toasts. Sonner component are located in /app/src/components/ui/sonner.tsx"
   ]
 }
