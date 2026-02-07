@@ -16,11 +16,12 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 ## Fonctionnalités implémentées ✅
 - [x] Page d'accueil avec hero, badges de confiance, témoignages, étapes
 - [x] Formulaire d'estimation multi-étapes (4 étapes)
-  - Étape 1: Infos véhicule (marque, modèle, année, km, état, carburant, boîte, immatriculation, **prix souhaité**)
+  - Étape 1: Infos véhicule (marque, modèle, année, km, état, carburant, boîte, immatriculation, **prix souhaité**, **délai de vente**)
   - Étape 2: Upload photos (optionnel, max 10)
   - Étape 3: Coordonnées vendeur + consentement RGPD
   - Étape 4: Récapitulatif + confirmation
 - [x] **Champ "Prix souhaité" (optionnel)** - Ajouté le 7 Février 2026
+- [x] **Champ "Délai de vente" (optionnel)** - Options: Immédiatement, Sous 1 semaine, Sous 2 semaines, Sous 1 mois, Pas pressé
 - [x] Page de remerciement post-soumission
 - [x] Page "Comment ça marche" (4 étapes)
 - [x] Page "Véhicules rachetés" (6 types)
@@ -46,6 +47,7 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 ## Backlog P0 (Done)
 ✅ MVP complet livré
 ✅ Champ "Prix souhaité" ajouté
+✅ Champ "Délai de vente" ajouté
 
 ## Backlog P1 (Futur)
 - [ ] Tableau de bord admin pour gérer les demandes
@@ -65,4 +67,4 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 1er Janvier 2026
 
 ## Dernière mise à jour
-7 Février 2026 - Ajout du champ "Prix souhaité"
+7 Février 2026 - Ajout des champs "Prix souhaité" et "Délai de vente"
