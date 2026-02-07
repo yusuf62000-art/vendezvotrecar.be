@@ -29,6 +29,11 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
   - Changement de statut (Nouveau → Contacté → Traité → Refusé)
   - Suppression des demandes
   - Boutons d'action (Appeler, Email)
+- [x] **Multi-langue (FR/NL/EN)** - Ajouté le 7 Février 2026
+  - Français par défaut
+  - Sélecteur dans le header (Français | Nederlands | English)
+  - Toutes les pages traduites
+  - Préférence sauvegardée dans localStorage
 - [x] Page de remerciement post-soumission
 - [x] Page "Comment ça marche" (4 étapes)
 - [x] Page "Véhicules rachetés" (6 types)
@@ -56,6 +61,7 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 ✅ Champ "Prix souhaité" ajouté
 ✅ Champ "Délai de vente" ajouté
 ✅ Tableau de bord admin
+✅ Multi-langue (FR/NL/EN)
 
 ## Backlog P1 (Futur)
 - [ ] Intégration reCAPTCHA
@@ -64,7 +70,6 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 ## Backlog P2 (Nice to have)
 - [ ] Estimation automatique basée sur l'Argus
 - [ ] Chat en direct
-- [ ] Multi-langue (FR/NL)
 
 ## Accès Admin
 - **URL secrète** : `/admin/vvc-secret-2026`
@@ -79,4 +84,4 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 1er Janvier 2026
 
 ## Dernière mise à jour
-7 Février 2026 - Ajout du tableau de bord admin
+7 Février 2026 - Ajout du multi-langue (FR/NL/EN)
