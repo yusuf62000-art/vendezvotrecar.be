@@ -573,6 +573,12 @@ const Estimation = () => {
                         <p className="font-medium text-green-600">{parseInt(formData.prix_souhaite).toLocaleString()} €</p>
                       </div>
                     )}
+                    {formData.delai_vente && (
+                      <div>
+                        <span className="text-gray-500">Délai de vente</span>
+                        <p className="font-medium">{delaiVenteOptions.find(d => d.value === formData.delai_vente)?.label}</p>
+                      </div>
+                    )}
                   </div>
 
                   <hr className="border-gray-200" />
