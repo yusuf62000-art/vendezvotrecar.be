@@ -224,7 +224,7 @@ async def send_estimation_notification(estimation: dict):
                 
                 <div style="margin-top: 20px; text-align: center;">
                     <a href="{SITE_URL}/demande/{estimation.get('id', '')}" style="display: inline-block; background-color: #2563EB; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">
-                        Voir la demande avec photos
+                        Voir la demande complète
                     </a>
                 </div>
             </div>
@@ -238,7 +238,10 @@ async def send_estimation_notification(estimation: dict):
         
         subject = f"Nouvelle demande: {estimation.get('marque', '')} {estimation.get('modele', '')} - {estimation.get('nom', '')}"
         
-        await asyncio.to_thread(send_email_smtp, subject, html_content)
+        # Get photos for email attachment
+        photos = estimation.get('photos', [])
+        
+        await asyncio.to_thread(send_email_smtp_with_attachments, subject, html_content, photos)
         logger.info(f"Email notification sent for estimation {estimation.get('id', '')}")
     except Exception as e:
         logger.error(f"Failed to send email notification: {str(e)}")
