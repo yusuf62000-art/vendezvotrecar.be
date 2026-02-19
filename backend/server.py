@@ -148,6 +148,48 @@ def send_email_smtp(subject: str, html_content: str):
         server.sendmail(SMTP_EMAIL, NOTIFICATION_EMAIL, msg.as_string())
 
 
+def send_email_smtp_with_attachments(subject: str, html_content: str, photos: List[str]):
+    """Send email using Gmail SMTP with image attachments"""
+    msg = MIMEMultipart('mixed')
+    msg['Subject'] = subject
+    msg['From'] = SMTP_EMAIL
+    msg['To'] = NOTIFICATION_EMAIL
+    
+    # Add HTML content
+    html_part = MIMEText(html_content, 'html')
+    msg.attach(html_part)
+    
+    # Add photos as attachments
+    for i, photo_data in enumerate(photos):
+        try:
+            # Handle base64 data URL format: data:image/jpeg;base64,/9j/4AAQ...
+            if ',' in photo_data:
+                header, data = photo_data.split(',', 1)
+                # Determine image type from header
+                if 'png' in header:
+                    img_type = 'png'
+                else:
+                    img_type = 'jpeg'
+            else:
+                data = photo_data
+                img_type = 'jpeg'
+            
+            # Decode base64 to binary
+            img_data = base64.b64decode(data)
+            
+            # Create image attachment
+            img = MIMEImage(img_data, _subtype=img_type)
+            img.add_header('Content-Disposition', 'attachment', filename=f'photo_{i+1}.{img_type}')
+            msg.attach(img)
+        except Exception as e:
+            logger.error(f"Failed to attach photo {i+1}: {str(e)}")
+            continue
+    
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+        server.login(SMTP_EMAIL, SMTP_PASSWORD)
+        server.sendmail(SMTP_EMAIL, NOTIFICATION_EMAIL, msg.as_string())
+
+
 async def send_estimation_notification(estimation: dict):
     """Send email notification for new estimation request via Gmail SMTP"""
     try:
