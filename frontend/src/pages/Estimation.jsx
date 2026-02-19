@@ -104,18 +104,50 @@ const Estimation = () => {
 
   const handlePhotoUpload = (e) => {
     const files = Array.from(e.target.files);
-    if (files.length + formData.photos.length > 10) {
-      toast.error('Maximum 10 photos autorisées');
+    const MAX_PHOTOS = 5;
+    const MAX_SIZE_KB = 500; // Max 500KB per image after compression
+    
+    if (files.length + formData.photos.length > MAX_PHOTOS) {
+      toast.error(`Maximum ${MAX_PHOTOS} photos autorisées`);
       return;
     }
 
     files.forEach(file => {
+      // Compress image before adding
       const reader = new FileReader();
       reader.onloadend = () => {
-        setFormData(prev => ({
-          ...prev,
-          photos: [...prev.photos, reader.result]
-        }));
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          const MAX_WIDTH = 1200;
+          const MAX_HEIGHT = 1200;
+          let width = img.width;
+          let height = img.height;
+          
+          // Resize if too large
+          if (width > MAX_WIDTH) {
+            height = (height * MAX_WIDTH) / width;
+            width = MAX_WIDTH;
+          }
+          if (height > MAX_HEIGHT) {
+            width = (width * MAX_HEIGHT) / height;
+            height = MAX_HEIGHT;
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, width, height);
+          
+          // Compress to JPEG with quality 0.7
+          const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+          
+          setFormData(prev => ({
+            ...prev,
+            photos: [...prev.photos, compressedDataUrl]
+          }));
+        };
+        img.src = reader.result;
       };
       reader.readAsDataURL(file);
     });
