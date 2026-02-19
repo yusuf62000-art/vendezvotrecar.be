@@ -426,7 +426,7 @@ const Estimation = () => {
                   Photos de votre véhicule (optionnel)
                 </h2>
                 <p className="text-gray-600 text-sm">
-                  Ajoutez jusqu'à 10 photos pour une estimation plus précise
+                  Ajoutez jusqu'à 5 photos pour une estimation plus précise
                 </p>
 
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-brand-primary transition-colors">
