@@ -106,22 +106,19 @@ export const CookieBanner = () => {
   if (!showBanner) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-50 p-4" data-testid="cookie-banner">
-      <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <Cookie className="h-6 w-6 text-brand-primary flex-shrink-0" />
-          <p className="text-sm text-gray-600">
-            Nous utilisons des cookies pour améliorer votre expérience. 
-            <a href="/cookies" className="text-brand-primary hover:underline ml-1">
-              En savoir plus
-            </a>
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant="outline" size="sm" onClick={refuseCookies} data-testid="refuse-cookies">
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40 p-3 sm:p-4" data-testid="cookie-banner">
+      <div className="mx-auto max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+        <p className="text-xs sm:text-sm text-gray-600 text-center sm:text-left">
+          Nous utilisons des cookies pour améliorer votre expérience. 
+          <a href="/cookies" className="text-brand-primary hover:underline ml-1">
+            En savoir plus
+          </a>
+        </p>
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <Button variant="outline" size="sm" onClick={refuseCookies} data-testid="refuse-cookies" className="text-xs px-3 py-1 h-8">
             Refuser
           </Button>
-          <Button size="sm" className="bg-brand-primary hover:bg-blue-700" onClick={acceptCookies} data-testid="accept-cookies">
+          <Button size="sm" className="bg-brand-primary hover:bg-blue-700 text-xs px-3 py-1 h-8" onClick={acceptCookies} data-testid="accept-cookies">
             Accepter
           </Button>
         </div>
