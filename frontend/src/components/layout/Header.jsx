@@ -55,12 +55,12 @@ export const Header = () => {
           <div className="hidden lg:flex lg:items-center lg:gap-4">
             <LanguageSwitcher />
             <a
-              href="tel:+32451025849"
+              href="tel:+32472950237"
               className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-brand-primary transition-colors"
               data-testid="phone-link"
             >
               <Phone className="h-4 w-4" />
-              +32 451 02 58 49
+              +32 472 95 02 37
             </a>
             <Link to="/estimation">
               <Button 
@@ -115,11 +115,11 @@ export const Header = () => {
             ))}
             <div className="pt-4 border-t border-gray-100">
               <a
-                href="tel:+32451025849"
+                href="tel:+32472950237"
                 className="flex items-center gap-2 px-3 py-2 text-base font-medium text-gray-600"
               >
                 <Phone className="h-5 w-5" />
-                +32 451 02 58 49
+                +32 472 95 02 37
               </a>
               <div className="px-3 pt-2">
                 <Link to="/estimation" onClick={() => setMobileMenuOpen(false)}>

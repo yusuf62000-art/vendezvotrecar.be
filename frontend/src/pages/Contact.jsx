@@ -69,8 +69,8 @@ const Contact = () => {
     {
       icon: Phone,
       title: 'Téléphone',
-      value: '+32 451 02 58 49',
-      href: 'tel:+32451025849'
+      value: '+32 472 95 02 37',
+      href: 'tel:+32472950237'
     },
     {
       icon: Mail,

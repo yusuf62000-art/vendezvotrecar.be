@@ -17,7 +17,7 @@ const Legal = () => {
           <p>
             <strong>Nom du site :</strong> VendezVotreCar<br />
             <strong>Email :</strong> vendezvotrecar@gmail.com<br />
-            <strong>Téléphone :</strong> +32 451 02 58 49<br />
+            <strong>Téléphone :</strong> +32 472 95 02 37<br />
             <strong>Zone d'activité :</strong> Belgique (Wallonie, Bruxelles, Flandre)
           </p>
 

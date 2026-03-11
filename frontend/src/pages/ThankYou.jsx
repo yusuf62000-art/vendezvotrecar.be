@@ -76,7 +76,7 @@ const ThankYou = () => {
           <p className="text-blue-100 mb-4">
             N'hésitez pas à nous appeler directement
           </p>
-          <a href="tel:+32451025849">
+          <a href="tel:+32472950237">
             <Button 
               variant="secondary" 
               size="lg" 
@@ -84,7 +84,7 @@ const ThankYou = () => {
               data-testid="call-button"
             >
               <Phone className="mr-2 h-5 w-5" />
-              +32 451 02 58 49
+              +32 472 95 02 37
             </Button>
           </a>
         </div>
