@@ -17,7 +17,7 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 - [x] Page d'accueil avec hero, badges de confiance, témoignages, étapes
 - [x] Formulaire d'estimation multi-étapes (4 étapes)
   - Étape 1: Infos véhicule (marque, modèle, année, km, état, carburant, boîte, immatriculation, **prix souhaité**, **délai de vente**)
-  - Étape 2: Upload photos (optionnel, **max 5 photos**, compression automatique)
+  - Étape 2: Upload photos (optionnel, **max 8 photos**, compression automatique)
   - Étape 3: Coordonnées vendeur + consentement RGPD
   - Étape 4: Récapitulatif + confirmation
 - [x] **Champ "Prix souhaité" (optionnel)** - Ajouté le 7 Février 2026
