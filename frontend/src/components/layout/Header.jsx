@@ -95,10 +95,6 @@ export const Header = () => {
         {mobileMenuOpen && (
           <div className="lg:hidden absolute top-16 left-0 right-0 bg-white border-b shadow-lg z-50">
             <div className="py-4 space-y-2 px-4">
-            {/* Language Switcher Mobile */}
-            <div className="px-3 py-2 border-b border-gray-100 mb-2">
-              <LanguageSwitcher />
-            </div>
             {navigation.map((item) => (
               <Link
                 key={item.href}
