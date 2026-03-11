@@ -104,7 +104,7 @@ const Estimation = () => {
 
   const handlePhotoUpload = (e) => {
     const files = Array.from(e.target.files);
-    const MAX_PHOTOS = 5;
+    const MAX_PHOTOS = 8;
     const MAX_SIZE_KB = 500; // Max 500KB per image after compression
     
     if (files.length + formData.photos.length > MAX_PHOTOS) {
@@ -426,7 +426,7 @@ const Estimation = () => {
                   Photos de votre véhicule (optionnel)
                 </h2>
                 <p className="text-gray-600 text-sm">
-                  Ajoutez jusqu'à 5 photos pour une estimation plus précise
+                  Ajoutez jusqu'à 8 photos pour une estimation plus précise
                 </p>
 
                 <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-brand-primary transition-colors">
