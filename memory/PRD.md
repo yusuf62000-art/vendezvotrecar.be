@@ -53,7 +53,7 @@ Site web de rachat de véhicules aux particuliers en Belgique (Wallonie, Bruxell
 
 ## Coordonnées configurées
 - **Nom**: VendezVotreCar
-- **Téléphone**: +32 451 02 58 49
+- **Téléphone**: +32 472 95 02 37
 - **Email**: vendezvotrecar@gmail.com
 - **Zone**: Wallonie, Bruxelles, Flandre (Belgique)
 - **Site production**: https://vendezvotrecar.be
