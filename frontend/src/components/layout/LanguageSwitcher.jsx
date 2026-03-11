@@ -7,8 +7,29 @@ const languageNames = {
   en: 'English',
 };
 
-export const LanguageSwitcher = () => {
+export const LanguageSwitcher = ({ compact = false }) => {
   const { language, changeLanguage, languages } = useLanguage();
+
+  if (compact) {
+    return (
+      <div className="flex items-center justify-center gap-2 text-xs" data-testid="language-switcher-compact">
+        {languages.map((lang) => (
+          <button
+            key={lang}
+            onClick={() => changeLanguage(lang)}
+            className={`px-2 py-1 rounded transition-colors ${
+              language === lang
+                ? 'bg-brand-primary text-white font-semibold'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+            data-testid={`lang-compact-${lang}`}
+          >
+            {lang.toUpperCase()}
+          </button>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center gap-1 text-sm" data-testid="language-switcher">
