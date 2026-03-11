@@ -6,6 +6,7 @@ import { LanguageProvider } from "./context/LanguageContext";
 // Layout
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
+import WhatsAppButton from "./components/layout/WhatsAppButton";
 
 // Pages
 import Home from "./pages/Home";
